@@ -1,26 +1,40 @@
 'use strict'
 console.log('im the best controller')
 
+function onInit() {
+    renderGallery()
+    console.log("oninit")
+}
+
+function renderGallery() {
+    var imgs = getImgsForDisplay()
+    var strHTML = '';
+    imgs.map(function (imgOb) {
+        return strHTML += `<img class="img-btn" src="${imgOb.url}" onclick="onOpenEditor(${imgOb.id})">`
+    });
+    var elGallery = document.querySelector('.image-gallery');
+    elGallery.innerHTML = strHTML
+}
 
 function onOpenEditor(imgId) {
-    gMeme.selectedImgId = imgId
-    _creatCanvas()
     var elMemeEditor = document.querySelector('.meme-editor-modali');
     elMemeEditor.style.display = "block";
-    elMemeEditor.querySelector('.meme-canvas').innerHTML = `"${gCanvas}"`
-}
-function onCloseEditor() {
-     var elMeme = document.querySelector('.meme-editor-modali').style.display = "none";
+    gMeme.selectedImgId = imgId
+    renderEditor()
 }
 
-function onAddTxt(){
-    gMeme.lines.txt = document.querySelector('.input-txt').value
-    console.log(gMeme.lines.txt)
-    gCtx.font = '40pt IMPACT';
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white';
-    gCtx.fillText(gMeme.lines.txt, 50, 50);
-    // gCtx.clearRect(0,0,gCanvas.width, gCanvas.height)
-    // _creatCanvas()
-    // gCtx.lastValue = gMeme.lines.txt
+function renderEditor() {
+    creatCanvas()
+    document.querySelector('.meme-canvas').innerHTML = `"${gCanvas}"`
+    drawImg()
+}
+
+function onCloseEditor() {
+    document.querySelector('.meme-editor-modali').style.display = "none";
+}
+
+function onInputTyping(txt) {
+    updateTxt(txt)
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+    renderEditor()
 }

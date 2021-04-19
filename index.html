@@ -32,8 +32,8 @@
     <main>
         <section class="imgs-panel">
             <div class="image-gallery">
-                <img class="img-btn" src="./imgs/1.jpg" onclick="onOpenEditor(0)">
-                <img class="img-btn" src="./imgs/10.jpg" onclick="onOpenEditor(1)">
+                <!-- <img class="img-btn" src="./imgs/1.jpg" onclick="onOpenEditor(0)">
+                <img class="img-btn" src="./imgs/10.jpg" onclick="onOpenEditor(1)"> -->
             </div>
         </section>
     </main>
@@ -44,10 +44,11 @@
         </div>
 
         <div class="control-box">
-            <input class="input-txt" id="txt-line" type="text" placeholder="Text line" oninput="onAddTxt()">
+            <input class="input-txt" id="txt-line" type="text" placeholder="Text line" oninput="onInputTyping(this.value)">
         </div>
 
         <button class="btn-close-modali" onclick="onCloseEditor()">Back to the gallery</button>
+
     </div>
 
     <script src="./js/meme-controller.js"></script>
