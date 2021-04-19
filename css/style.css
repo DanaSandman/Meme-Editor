@@ -1,0 +1,30 @@
+body{
+background-color: rgb(204, 248, 202);
+}
+img{
+    cursor: pointer;
+}
+canvas{
+    float: left;
+}
+.meme-editor-modali{
+    display: none;
+    position: fixed; 
+    z-index: 4; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(250, 248, 248); 
+}
+
+.input-txt{
+    border: solid 1px rgb(12, 11, 12);
+    width: 150px;
+    height: 30px;
+}
+.img-btn{
+    height: 300px;
+    width: 300px;
+}

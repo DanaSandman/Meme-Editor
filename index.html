@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ultimate Meme Generator</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<h1>Ultimate Meme Generator</h1>
+
+<body onload="onInit()">
+    <!-- <header>
+        <section>
+            <div class="logo">logo</div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#">Memes</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </header> -->
+    <!-- <section class="search-line">
+        search line
+    </section> -->
+    <main>
+        <section class="imgs-panel">
+            <div class="image-gallery">
+                <img class="img-btn" src="./imgs/1.jpg" onclick="onOpenEditor(0)">
+                <img class="img-btn" src="./imgs/10.jpg" onclick="onOpenEditor(1)">
+            </div>
+        </section>
+    </main>
+    <div class="meme-editor-modali">
+        <h1>Meme Editor</h1>
+        <div class="canvas-container">
+            <canvas class="meme-canvas" width="500" height="500"></canvas>
+        </div>
+
+        <div class="control-box">
+            <input class="input-txt" id="txt-line" type="text" placeholder="Text line" oninput="onAddTxt()">
+        </div>
+
+        <button class="btn-close-modali" onclick="onCloseEditor()">Back to the gallery</button>
+    </div>
+
+    <script src="./js/meme-controller.js"></script>
+    <script src="js/services/meme-service.js"></script>
+</body>
+
+</html>
