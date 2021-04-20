@@ -1,12 +1,92 @@
-body{
-background-color: rgb(204, 248, 202);
+*{
+    box-sizing:border-box;
 }
-img{
+html {
+    font-family: lato-regular, sans-serif;
+
+}body {
+    font-size: 1rem;
+    margin: 0px;
+    padding: 0px;
+    height: 937px;
+    width: 100%;
+    background-color:#ffffff;    
+}a {
+    text-decoration: none;  
+    color: #ffffff;
+}img , button {
     cursor: pointer;
 }
-canvas{
-    float: left;
+
+/* HEADER */
+.main-header {
+    background-color: #ff7f00;
+    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    height: 33px;
+    width: 100%;
+    margin: 0px;
+    padding: 8.5px 25px 0 24.5px;
 }
+.logo {
+    font-family: eurofurence, sans-serif;
+    font-size: 20px;
+    color: #FFFFFF;
+    margin-left:25px;;
+}
+.main-nav a{
+    width: 100%;
+    margin: 15px;
+}
+.nav-container{
+padding-right: 25px;
+}
+.search-line{
+    height: 50px;
+    background-color: #fff;
+    margin: 0;
+}
+/* GALLERY */
+.main-container{
+    width: 100%;
+}
+.grid-container{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 250px 250px;
+    grid-template-columns:250px 250px;
+    grid-row-gap: 15px;
+    grid-column-gap: 15px;
+  }
+.image-gallery {
+    padding: 13.5px 24.5px 13.5px 25px;
+    background-color: #e3e3e3;
+}
+.imgs-panel{
+    width: 100%;
+    height: 100%;
+}
+.img-btn{
+    width: 100%;
+    height: 100%;
+    margin: 30px;
+    object-fit: contain;
+}
+
+/* FOOTER */
+.footer-main{
+    width: 100%;
+    height: 103.5px;
+    background-color: #ff7f00;
+}
+.footer-main-logo{
+    color: #ffffff;
+}
+
+/* MODAL */
 .meme-editor-modali{
     display: none;
     position: fixed; 
@@ -18,13 +98,50 @@ canvas{
     overflow: auto; 
     background-color: rgb(250, 248, 248); 
 }
-
+.main-editor-container{
+ padding: 13px 25px 80px 13px;
+ width: 100%;
+}
+.canvas-panel{
+    margin-right: 80px;
+    width: 100%;
+}
+.control-panel{
+    width: 100%; 
+}
 .input-txt{
     border: solid 1px rgb(12, 11, 12);
     width: 150px;
     height: 30px;
 }
-.img-btn{
-    height: 300px;
-    width: 300px;
+
+/* HELPERS */
+.flex {
+    display: flex;
+} 
+.justify-content{
+    justify-content: center;
+}
+.space-between {
+    justify-content: space-between;
+}
+.align-center {
+    align-items: center;
+}
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+} 
+
+/* RESPONSIV */
+@media (max-width: 780px){
+    .grid-container{
+        grid-auto-flow: column;
+    }
+
 }

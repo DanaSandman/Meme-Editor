@@ -1,5 +1,5 @@
 'use strict'
-console.log('im the best main service')
+console.log('main service')
 
 var gCanvas;
 var gCtx;
@@ -12,14 +12,18 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [{
         txt: '',
-        size: 20,
+        size: 50,
         align: 'left',
-        color: 'red'
+        color: 'white',
+        y: 70,
+        x: 50
     }, {
         txt: '',
-        size: 20,
+        size: 50,
         align: 'left',
-        color: 'red'
+        color: 'white',
+        y: 470,
+        x: 50
     }]
 };
 
@@ -50,18 +54,11 @@ function getImgsForDisplay() {
     return gImgs
 }
 
-function getImgsById(imgId) {
-    var img = gImgs.find(function (img) {
-        return imgId === img.id
-    })
-    return img
-}
-
 function drawImg() {
     let elImg = new Image()
     elImg.onload = function () {
         gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
-        addTxt()
+        drowTxt()
     }
     var imgUrl = gImgs.filter(img =>
         img.id === gMeme.selectedImgId
@@ -69,16 +66,34 @@ function drawImg() {
     elImg.src = `${imgUrl[0].url}`;
 }
 
-function addTxt() {
-    gCtx.font = '40pt IMPACT';
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
-    gCtx.stroke();
-    gCtx.fill()
-    gCtx.fillText(gMeme.lines[0].txt, 50, 50);
-
+function updateTxt(txt) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
-function updateTxt(txt) {
-    gMeme.lines[0].txt = txt
+function drowTxt() {
+    gCtx.strokeStyle = 'black'
+    // gCtx.stroke();
+    // gCtx.fill()
+
+    gMeme.lines.forEach(function (line) {
+        gCtx.fillStyle = `${line.color}`;
+        gCtx.font = `${line.size}pt IMPACT`;
+        gCtx.fillText(line.txt, line.x, line.y);
+    });
+
+    // console.log('gMeme.lines[0].size ', gMeme.lines[0].size)
+}
+
+function changeTxtSize(size) {
+    gMeme.lines[gMeme.selectedLineIdx].size += (size)
+    if (gMeme.lines[gMeme.selectedLineIdx].size >= 80) {
+        gMeme.lines[gMeme.selectedLineIdx].size = 80
+    } else if (gMeme.lines[gMeme.selectedLineIdx].size <= 10) {
+        gMeme.lines[gMeme.selectedLineIdx].size = 10
+    }
+}
+
+function moveTxt(move) {
+    var newLocation = gMeme.lines[gMeme.selectedLineIdx].y + (move)
+    gMeme.lines[gMeme.selectedLineIdx].y = newLocation
 }
