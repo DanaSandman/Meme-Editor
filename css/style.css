@@ -13,7 +13,7 @@ html {
 }a {
     font-size: 1.5rem;
     text-decoration: none;  
-    color: black;
+    color:#ffffff; 
 }img , button {
     cursor: pointer;
 }button{
@@ -22,7 +22,7 @@ html {
     padding: 5.5px 5.2px 4.9px 5.2px;
     border-radius: 6px;
     border: none;
-
+    color: white;
     background-color: #ffffff;
 }
 
@@ -140,6 +140,8 @@ canvas{
     font-size: 2rem;
     margin: 0 0 1px;
     border-radius: 6px;
+    padding:7px;
+    border: none;
     background-color: #ffffff;
 }
 .btn-download{
@@ -186,7 +188,7 @@ canvas{
 } 
 
 /* RESPONSIV */
-@media (max-width: 780px){
+@media screen and (max-width: 780px){
  
     .main-editor-container{
         flex-direction: column;
@@ -204,7 +206,4 @@ canvas{
     form{
         text-align: center;
     }
-
-        /* overflow-x: hidden;  */
-
 }

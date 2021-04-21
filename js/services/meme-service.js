@@ -60,7 +60,7 @@ function drowTxt() {
     gMeme.lines.forEach(function (line) {
         gCtx.font = `${line.size}pt IMPACT`;
         gCtx.fillStyle = `${line.color}`;
-        gCtx.strokeStyle= 'blck'
+        gCtx.strokeStyle= `${line.strokeStyle}`;
         gCtx.lineWidth = 3
         gCtx.fillText(line.txt, line.x, line.y);
         gCtx.strokeText(line.txt, line.x, line.y)
@@ -87,6 +87,7 @@ var line =
             size: 50,
             align: 'left',
             color: 'white',
+            strokeStyle: 'black',
             y: y,
             x: x
     }
@@ -135,3 +136,10 @@ function doUploadImg(elForm, onSuccess) {
         console.error(err)
     })
 }
+
+ function colorChange(color){
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+ }
+ function StrokeChange(color){
+    gMeme.lines[gMeme.selectedLineIdx].strokeStyle = color
+ }

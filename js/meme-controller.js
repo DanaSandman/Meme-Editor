@@ -5,6 +5,7 @@ console.log('controller')
 function onInit() {
     renderGallery()
 }
+
 function renderGallery() {
     var imgs = getImgsForDisplay()
     var strHTML = '';
@@ -22,31 +23,34 @@ function onOpenEditor(imgId) {
     gMeme.selectedImgId = imgId
     renderEditor()
 }
+
 function renderEditor() {
-    if(gImgs[gMeme.selectedImgId].id !== 18){
-          renderCanvas()  
-          renderControlPanel()  
-    }else if (gImgs[gMeme.selectedImgId].id === 18){
+    if (gImgs[gMeme.selectedImgId].id !== 18) {
+        renderCanvas()
+        renderControlPanel()
+    } else if (gImgs[gMeme.selectedImgId].id === 18) {
         renderControlPanel()
     }
 }
-function renderCanvas(img){    
-        if(gImgs[gMeme.selectedImgId].id !== 18){
-            creatCanvas()
-            document.querySelector('.meme-canvas').innerHTML = `"${gCanvas}"`
-            drawImg()
-        }else if (gImgs[gMeme.selectedImgId].id === 18){
-            gCanvas.width = 500;
-            gCanvas.height = 500;
-            gCtx.drawImage(img, 0, 0,500,500);
-            drowTxt()
-        }
+
+function renderCanvas(img) {
+    if (gImgs[gMeme.selectedImgId].id !== 18) {
+        creatCanvas()
+        document.querySelector('.meme-canvas').innerHTML = `"${gCanvas}"`
+        drawImg()
+    } else if (gImgs[gMeme.selectedImgId].id === 18) {
+        gCanvas.width = 500;
+        gCanvas.height = 500;
+        gCtx.drawImage(img, 0, 0, 500, 500);
+        drowTxt()
+    }
 }
-function renderControlPanel(){
-        var lines = getLinesForDisplay()
-        var strHTML = ''
-        lines.forEach(function (line,idx){
-            strHTML+=`
+
+function renderControlPanel() {
+    var lines = getLinesForDisplay()
+    var strHTML = ''
+    lines.forEach(function (line, idx) {
+        strHTML += `
             <div class="line">
             <input class="input-txt" type="text" placeholder="Text line1"
             oninput="onInputTyping(this.value,${idx})">
@@ -61,14 +65,23 @@ function renderControlPanel(){
             </div>
             <div class="remov-line"><button onclick="onRemoveLine(${idx})"><img src="./imgs/imgs-utils/icons/trash.png"></button></div>
         </div>
+        <div>
+            <input type="color" id="body" name="body"
+            value="#f6b73c" onchange="onColorChange(value)">
+            <label for="body"></label>
+            <input type="color" id="body" name="body"
+            value="#f6b73c" onchange="onChangeStroke(value)">
+            <label for="body"></label>
+        </div>
         </div>`
-        });
-        strHTML += '<div class="flex"><div class="switch-line"> <button class="btn-switch-lines" onclick="onSwitchLines()"><img src="./imgs/imgs-utils/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button></div> <div class="add-line"><button onclick="onAddLine()"><img src="./imgs/imgs-utils/icons/add.png"></button></button></div></div>'
-     
-        document.querySelector('.control-panel').innerHTML=strHTML;
+    });
+    strHTML += '<div class="flex"><div class="switch-line"> <button class="btn-switch-lines" onclick="onSwitchLines()"><img src="./imgs/imgs-utils/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button></div> <div class="add-line"><button onclick="onAddLine()"><img src="./imgs/imgs-utils/icons/add.png"></button></button></div></div>'
+
+    document.querySelector('.control-panel').innerHTML = strHTML;
 
 }
-function onCloseEditor(){
+
+function onCloseEditor() {
     document.querySelector('.meme-editor-modali').style.display = "none";
 }
 
@@ -79,19 +92,30 @@ function onInputTyping(txt, idx) {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     renderCanvas(idx)
 }
+
 function onChangeTxtSize(idx, num) {
     gMeme.selectedLineIdx = idx
     changeTxtSize(num)
     renderCanvas()
 }
+
 function onMoveDown(idx) {
     gMeme.selectedLineIdx = idx
     moveTxt(+10)
     renderCanvas()
 }
+
 function onMoveUp(idx) {
     gMeme.selectedLineIdx = idx
     moveTxt(-10)
+    renderCanvas()
+}
+function onColorChange(value){
+    colorChange(value)
+    renderCanvas()
+}
+function onChangeStroke(value){
+    StrokeChange(value)
     renderCanvas()
 }
 
@@ -102,11 +126,13 @@ function onSwitchLines() {
     gMeme.lines[1].y = line1
     renderEditor()
 }
-function onRemoveLine(idx){
+
+function onRemoveLine(idx) {
     removeLine(idx)
     renderEditor()
 }
-function onAddLine(){
+
+function onAddLine() {
     addLine()
     renderEditor()
 }
@@ -121,16 +147,17 @@ function downloadImg(elLink) {
 function onImgInput(ev) {
     creatCanvas()
     var img = {
-        id:gImgs.length,
+        id: gImgs.length,
         url: ev,
         keywords: ['happy']
     }
     gImgs.push(img)
-    onOpenEditor(img.id) 
+    onOpenEditor(img.id)
     gMeme.selectedImgId = img.id
-    console.log('gMeme.selectedImgId',gMeme.selectedImgId)
+    console.log('gMeme.selectedImgId', gMeme.selectedImgId)
     loadImageFromInput(ev, renderCanvas)
 }
+
 function loadImageFromInput(ev, onImageReady) {
     document.querySelector('.share-container').innerHTML = ''
     var reader = new FileReader();
