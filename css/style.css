@@ -140,8 +140,22 @@ padding-right: 25px;
 
 /* RESPONSIV */
 @media (max-width: 780px){
+    
     .grid-container{
         grid-auto-flow: column;
     }
+    .main-editor-container{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .canvas-panel{
+        margin: 10px;
+    }
+    .control-panel{
+        align-items: center;
+    }
+    /* .meme-editor-modali{
+        height: 460vh;
+    } */
 
 }
