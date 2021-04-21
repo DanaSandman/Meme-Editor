@@ -1,18 +1,18 @@
 'use strict'
 console.log('main service')
-
+const KEY = 'Memes'
 var gCanvas;
 var gCtx;
 var gImgs;
-// var gKeywords = {'happy': 12,'funny puk': 1}
-_creatImgs()
 
+_creatImgs()
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
     lines: []
 };
 _createLines()
+
 
 // IMG
 function _createImg(id) {
@@ -23,13 +23,12 @@ function _createImg(id) {
     }
     return img
 }
-function _creatImgs() {
-    var imgs = [
-        _createImg(1),
-        _createImg(10)
-    ];
+function _creatImgs(){
+    var imgs = []
+    for (var i=1 ; i <19 ; i++){
+        imgs.push(_createImg(i)) 
+    }
     gImgs = imgs;
-
 }
 function creatCanvas() {
     gCanvas = document.querySelector('.meme-canvas')
@@ -52,7 +51,6 @@ function drawImg() {
 function getLinesForDisplay() {
     return gMeme.lines
 }
-
 
 // TEXT
 function updateTxt(txt) {
@@ -82,7 +80,6 @@ function moveTxt(move) {
 }
 
 // LINES
-
 function _createLine(y,x){
 var line = 
      {
@@ -108,5 +105,33 @@ function removeLine(idx){
 function addLine() {
     var line =  _createLine(250, 50)
     gMeme.lines.unshift(line)
+}
 
+// UPLOAD
+function uploadImg(elForm, ev) {
+    ev.preventDefault();
+    document.getElementById('imgData').value = gCanvas.toDataURL("image/jpeg");
+
+    function onSuccess(uploadedImgUrl) {
+        uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        document.querySelector('.share-container').innerHTML = `
+        <a class="btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+           Share to Facebook
+        </a>`
+    }
+    doUploadImg(elForm, onSuccess);
+}
+function doUploadImg(elForm, onSuccess) {
+    var formData = new FormData(elForm);
+    fetch('http://ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(function (res) {
+        return res.text()
+    })
+    .then(onSuccess)
+    .catch(function (err) {
+        console.error(err)
+    })
 }

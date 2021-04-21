@@ -22,6 +22,9 @@
     </header>
     <main class="main-container ">
        <section class="search-line">
+           <div class="upload-img">
+            <input class="file-input" type="file" name="image" onchange="onImgInput(event)" />
+           </div>
     </section>  
         <section class="imgs-panel">
             <div class="image-gallery grid-container"></div>
@@ -46,10 +49,18 @@
         <main class="main-editor-container flex">
             <section class="canvas-panel">
                 <canvas class="meme-canvas" width="500" height="500"></canvas>
+                <div class="share-download flex-column space-between">
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                    <button class="btn-publish" type="submit">Share</button>
+                    <a href="#" class="btn-download" onclick="downloadImg(this)" download="my-img.jpg">Download as jpeg</a>
+                    <div class="share-container"></div>
+                </div>
             </section>
             <section class="control-panel flex-column space-between">
             </section>
         </main>
+        <!-- <button class="save-btn" onclick="onSaveMeme()">SAVE</button> -->
         <footer class="footer-main flex-column align-center"><span class="footer-main-logo">Memegen</span></footer>
     </div>
 
