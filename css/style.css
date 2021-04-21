@@ -17,7 +17,7 @@ html {
 }img , button {
     cursor: pointer;
 }button{
-    font-size: 1.7rem;
+    font-size:2rem;
     margin: 4.5px 9px 0 9.5px;
     padding: 5.5px 5.2px 4.9px 5.2px;
     border-radius: 6px;
@@ -32,7 +32,7 @@ html {
     justify-content: flex-end;
     justify-content: space-between;
     align-items: center;
-    height: 5rem;
+    height: 10rem;
     width: 100%;
     margin: 0px;
     padding: 8.5px 25px 0 24.5px;
@@ -45,6 +45,7 @@ html {
 }
 .main-nav a{
     width: 100%;
+    font-size: 1em;
     margin: 15px;
     color: white;
     font-family: Montserrat;
@@ -99,7 +100,7 @@ font-size: 1.8rem;
 /* FOOTER */
 .footer-main{
     width: 100%;
-    height: 10rem;
+    height: 20rem;
     background-color: #ff7f00;
 }
 .footer-main-logo{
@@ -157,6 +158,9 @@ canvas{
     border-radius: 6px;
     background-color: #ff7f00;
 }
+.line{
+    margin-bottom: 3rem;
+}
 
 /* HELPERS */
 .flex {
@@ -183,25 +187,19 @@ canvas{
 
 /* RESPONSIV */
 @media (max-width: 780px){
+ 
     .main-editor-container{
         flex-direction: column;
-        justify-content: space-between;
         justify-content: center;
         align-items: center;
-        margin-top: 180px;
+        margin-top: 255px;
     }
     .canvas-panel{
         margin: 10px;
     }
     .control-panel{
         align-items: center;
-        margin-bottom: 12.5rem;
-    }
-    .image-gallery {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        margin-bottom: 18rem;
     }
     form{
         text-align: center;

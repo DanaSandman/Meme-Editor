@@ -3,12 +3,13 @@
 
 <head>
     <title>Ultimate Meme Generator</title>
+    <link rel="icon" href="./imgs/imgs-utils/fav.png" type="image/x-icon"/>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body class="flex flex-column align-center" onload="onInit()">
     <header class="main-header flex ">
-        <div class="logo">Memegen</div>
+        <div class="logo" onclick="onCloseEditor()"href="#" ><img src="./imgs/imgs-utils/logo.png"></div>
             <nav class="nav-container">
                 <ul class="main-nav clean-list flex align-center space-between " >
                     <li>
@@ -30,11 +31,11 @@
             <div class="image-gallery grid-container"></div>
         </section>
     </main>
-    <footer class="footer-main flex-column align-center"><span class="footer-main-logo">Memegen</span></footer>
+    <footer class="footer-main flex-column align-center"><span class="footer-main-logo"><img src="./imgs/imgs-utils/logo.png"></span></footer>
 
     <div class="meme-editor-modali">
     <header class="main-header flex ">
-            <div class="logo">Memegen</div>
+            <div class="logo" onclick="onCloseEditor()"href="#"><img src="./imgs/imgs-utils/logo.png"></div>
                 <nav class="nav-container">
                     <ul class="main-nav clean-list flex align-center space-between " >
                         <li>
@@ -57,11 +58,11 @@
                     <div class="share-container"></div>
                 </div>
             </section>
-            <section class="control-panel flex-column space-between">
+            <section class="control-panel flex-column ">
             </section>
         </main>
         <!-- <button class="save-btn" onclick="onSaveMeme()">SAVE</button> -->
-        <footer class="footer-main flex-column align-center"><span class="footer-main-logo">Memegen</span></footer>
+        <footer class="footer-main flex-column align-center"><span class="footer-main-logo"><img src="./imgs/imgs-utils/logo.png"></span></footer>
     </div>
 
     <script src="./js/meme-controller.js"></script>
