@@ -17,10 +17,10 @@ function renderGallery(galleryType) {
 
     imgs.map(function (imgOb) {
         if (galleryType === 'myGallery'){
-        strHTML += `<div class=" img-contianer flex-column"><img class="img-btn" src="${imgOb.url}" onclick="onOpenEditor(${imgOb.id})"><button class="btn-remove" onclick="onRemoveMeme(${imgOb.id})">remove</button></div>
+        strHTML += `<div class=" img-contianer  flex-column"><img class="img-btn" src="${imgOb.url}" onclick="onOpenEditor(${imgOb.id})"><button class="btn-remove" onclick="onRemoveMeme(${imgOb.id})">remove</button></div>
         `
         }else{
-            strHTML += `<img class="img-btn" src="${imgOb.url}" onclick="onOpenEditor(${imgOb.id})">`
+            strHTML += `<img class="img-btn box" src="${imgOb.url}" onclick="onOpenEditor(${imgOb.id})">`
         }
     });
     var elGallery = document.querySelector('.image-gallery');

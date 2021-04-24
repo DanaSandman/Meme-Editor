@@ -24,18 +24,23 @@ html {
     border: none;
     color: #FFFFFF;
     background-color: #FFFFFF;
+    box-shadow: 0 10px 6px -6px #777;
+
+}header{
+
 }
 .container{
     margin: 0 auto;
 }
 /* HEADER */
 .main-header {
-    background-color: #ff7f00;
+    background-color: #bccce4;
     justify-content: space-between;
     height: 9rem;
     width: 100%;
     margin: 0px;
     padding: 50px 25px 0 24.5px;
+    box-shadow: 0 10px 6px -6px #777;
 }
 .logo {
     font-family: eurofurence, sans-serif;
@@ -66,7 +71,7 @@ padding-right: 25px;
 margin-left: 2.7rem;    
 padding-top: 0.8rem;
 font-size: 1.8rem;
-color: #ff7f00;
+color: #bccce4;
 max-width: 100%;
 }
 .share-container{
@@ -102,7 +107,7 @@ max-width: 100%;
 .footer-main{
     width: 100%;
     height: 20rem;
-    background-color: #ff7f00;
+    background-color: #bccce4;
 }
 .footer-main-logo{
     color: #ffffff;
@@ -150,29 +155,36 @@ canvas{
     padding:7px;
     border: none;
     background-color: #ffffff;
+    box-shadow: 0 10px 6px -6px #777;
+
+}
+form{
+    text-align: center;
 }
 .btn-download{
-    background-color: #ff7f00;
+    background-color: #bccce4;
     font-size:2rem;
     margin: 4.5px 9px 0 9.5px;
     padding: 7px;
     border-radius: 6px;
+    box-shadow: 0 10px 6px -6px #777;
+
 }
 .btn-publish{
- background-color: #ff7f00;
+ background-color: #bccce4;
  padding: 8px;
 }
 .btn-facebook{
-    background-color: #ff7f00;
+    background-color: #bccce4;
     margin: 4.5px 9px 0 9.5px;
     padding: 5.5px 5.2px 4.9px 5.2px;
     border-radius: 6px;
 }
 .btn-save{
- background-color: #ff7f00;
+ background-color: #bccce4;
 }
 .btn-remove{
-    background-color: #ff7f00;
+    background-color: #bccce4;
     align-self: center;
 
 }
@@ -202,9 +214,8 @@ canvas{
     margin: 0;
     padding: 0;
 } 
-
-.share-download{
-    justify-self: flex-end;
+.box {
+    box-shadow: 0 10px 6px -6px #777;
 }
 
 /* RESPONSIV */
@@ -220,19 +231,24 @@ canvas{
     .grid-container{
         grid-row-gap: 2px;
     }
-   
     .file-input{
         font-size: 24px;
         margin: 0px;
     }
-   li{
-       display: none;
-   }
+    .nav-container{
+        padding-right: 0px;
+    }
+    .container-header{
+        flex-direction: column;
+    }
     .main-editor-container{
         flex-direction: row;
         justify-content: center;
         align-items: center;
         margin-top: 7.5rem;
+    }
+    .meme-editor-modali{
+        width: 100vw;
     }
     .control{
         margin-bottom: 2%;
@@ -248,8 +264,12 @@ canvas{
         align-items: center;
         margin-bottom: 18rem;
     }
-    .meme-editor-modali{
-        width: 100vw;
+    form{
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .btn-save{
+        margin-right: 2rem;
     }
 } 
 
