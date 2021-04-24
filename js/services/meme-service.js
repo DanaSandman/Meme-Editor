@@ -1,19 +1,19 @@
 'use strict'
-console.log('main service')
-const KEY = 'Memes'
-var gCanvas;
-var gCtx;
-var gImgs;
 
-_creatImgs()
+const KEY = 'Memes'
+var gImgs;
+var gMyImgs = [];
+var gMyMemes = [];
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
     lines: []
 };
+
+function init(){
+_creatImgs()
 _createLines()
-
-
+}
 // IMG
 function _createImg(id) {
     var img = {
@@ -23,48 +23,29 @@ function _createImg(id) {
     }
     return img
 }
-function _creatImgs(){
+function _creatImgs() {
     var imgs = []
-    for (var i=1 ; i <19 ; i++){
-        imgs.push(_createImg(i)) 
+    for (var i =0; i < 18; i++) {
+        imgs.push(_createImg(i))
     }
     gImgs = imgs;
 }
-function creatCanvas() {
-    gCanvas = document.querySelector('.meme-canvas')
-    gCtx = gCanvas.getContext('2d');
-}
-function getImgsForDisplay() {
-    return gImgs
-}
-function drawImg() {
-    let elImg = new Image()
-    elImg.onload = function () {
-        gCtx.drawImage(elImg, 0, 0, gCanvas.width, gCanvas.height)
-        drowTxt()
+function getImgsForDisplay(galleryType) 
+{
+    if (galleryType === 'main'){
+    
+        return gImgs
+
+    } else if (galleryType === 'myGallery'){
+
+        return gMyImgs
     }
-    var imgUrl = gImgs.filter(img =>
-        img.id === gMeme.selectedImgId
-    );
-    elImg.src = `${imgUrl[0].url}`;
-}
-function getLinesForDisplay() {
-    return gMeme.lines
+    
 }
 
 // TEXT
 function updateTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
-}
-function drowTxt() {
-    gMeme.lines.forEach(function (line) {
-        gCtx.font = `${line.size}pt IMPACT`;
-        gCtx.fillStyle = `${line.color}`;
-        gCtx.strokeStyle= `${line.strokeStyle}`;
-        gCtx.lineWidth = 3
-        gCtx.fillText(line.txt, line.x, line.y);
-        gCtx.strokeText(line.txt, line.x, line.y)
-    });
 }
 function changeTxtSize(size) {
     gMeme.lines[gMeme.selectedLineIdx].size += (size)
@@ -80,34 +61,64 @@ function moveTxt(move) {
 }
 
 // LINES
-function _createLine(y,x){
-var line = 
-     {
-            txt: '',
-            size: 50,
-            align: 'left',
-            color: 'white',
-            strokeStyle: 'black',
-            y: y,
-            x: x
+function _createLine(y, x, txt) {
+    var line = {
+        txt: txt,
+        size: 50,
+        align: 'left',
+        color: 'white',
+        strokeStyle: 'black',
+        y: y,
+        x: x
     }
     return line
 }
-function _createLines(){
-    var lines = [
-        _createLine(70,50),
-        _createLine(470,50)
+function _createLines() {
+    gMeme.lines = [
+        _createLine(70, 50, 'Text1'),
+        _createLine(470, 50, 'Text2'),
     ]
-    gMeme.lines = lines
-}
-function removeLine(idx){
-    gMeme.lines.splice(idx, 1)
 }
 function addLine() {
-    var line =  _createLine(250, 50)
-    gMeme.lines.unshift(line)
+
+    if(!gMeme.lines.length >= 2){
+        var line = _createLine(250, 50,'new Text')
+    }else{
+        var line = _createLine(getRandomInt(150, 350),50,'new Text')
+    } 
+    gMeme.lines.push(line)
+}
+function removeLine(idx) {
+    gMeme.lines.splice(idx, 1)
+    gMeme.selectedLineIdx = idx - 1
+}
+function getLinesForDisplay() {
+    return gMeme.lines
 }
 
+// STORAGE
+function saveMyMemes(meme){
+    console.log('save meme', meme.selectedImgId)
+    var myMeme = {
+        selectedImgId: meme.selectedImgId,
+        selectedLineIdx: meme.selectedLineIdx,
+        lines: meme.lines
+    }
+    
+    gMyMemes.push(myMeme)
+    saveToStorage(KEY, gMyMemes)
+}
+function removeMeme(imgId){
+    var img = gMyMemes.findIndex(function (meme) {
+        return meme.selectedImgId === imgId
+    })
+    gMyMemes.splice(img, 1)
+    saveToStorage(KEY, gMyMemes)
+}
+
+// function updateMeme(){
+
+// }
 // UPLOAD
 function uploadImg(elForm, ev) {
     ev.preventDefault();
@@ -125,21 +136,20 @@ function uploadImg(elForm, ev) {
 function doUploadImg(elForm, onSuccess) {
     var formData = new FormData(elForm);
     fetch('http://ca-upload.com/here/upload.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(function (res) {
-        return res.text()
-    })
-    .then(onSuccess)
-    .catch(function (err) {
-        console.error(err)
-    })
+            method: 'POST',
+            body: formData
+        })
+        .then(function (res) {
+            return res.text()
+        })
+        .then(onSuccess)
+        .catch(function (err) {
+            console.error(err)
+        })
 }
-
- function colorChange(color){
+function colorChange(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
- }
- function StrokeChange(color){
+}
+function StrokeChange(color) {
     gMeme.lines[gMeme.selectedLineIdx].strokeStyle = color
- }
+}

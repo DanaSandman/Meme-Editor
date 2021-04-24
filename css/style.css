@@ -8,7 +8,7 @@ html {
     font-size: 2rem;
     margin: 0px;
     padding: 0px;
-    width: 100%;
+    /* width: 100%; */
     background-color:#ffffff;   
 }a {
     font-size: 1.5rem;
@@ -22,20 +22,20 @@ html {
     padding: 5.5px 5.2px 4.9px 5.2px;
     border-radius: 6px;
     border: none;
-    color: white;
-    background-color: #ffffff;
+    color: #FFFFFF;
+    background-color: #FFFFFF;
 }
-
+.container{
+    margin: 0 auto;
+}
 /* HEADER */
 .main-header {
     background-color: #ff7f00;
-    justify-content: flex-end;
     justify-content: space-between;
-    align-items: center;
-    height: 10rem;
+    height: 9rem;
     width: 100%;
     margin: 0px;
-    padding: 8.5px 25px 0 24.5px;
+    padding: 50px 25px 0 24.5px;
 }
 .logo {
     font-family: eurofurence, sans-serif;
@@ -63,12 +63,16 @@ padding-right: 25px;
    padding: 8px;
 }
 .file-input{
+margin-left: 2.7rem;    
 padding-top: 0.8rem;
 font-size: 1.8rem;
+color: #ff7f00;
+max-width: 100%;
 }
 .share-container{
     margin-left: 80px;
 }
+
 /* GALLERY */
 .main-container{
     width: 100%;
@@ -86,14 +90,11 @@ font-size: 1.8rem;
     padding: 13.5px 24.5px 13.5px 25px;
     background-color: #e3e3e3;
 }
-.imgs-panel{
-    width: 100%;
-    height: 100%;
-}
+
 .img-btn{
     width: 100%;
     height: 100%;
-    margin: 30px;
+    /* margin: 1rem; */
     object-fit: contain;
 }
 
@@ -125,6 +126,9 @@ font-size: 1.8rem;
  width: 100%;
  height: 85%;
 }
+.lines-control{
+margin-bottom: 1.28rem;
+}
 .canvas-panel{
     margin-right: 5rem;
     width: 100%;
@@ -136,6 +140,9 @@ canvas{
 .control-panel{
     width: 100%; 
 }
+.control{
+    margin-bottom: 40%;
+}
 .input-txt{
     font-size: 2rem;
     margin: 0 0 1px;
@@ -145,20 +152,29 @@ canvas{
     background-color: #ffffff;
 }
 .btn-download{
-    margin: 4.5px 9px 0 9.5px;
-    padding: 8px;
-    border-radius: 6px;
     background-color: #ff7f00;
+    font-size:2rem;
+    margin: 4.5px 9px 0 9.5px;
+    padding: 7px;
+    border-radius: 6px;
 }
 .btn-publish{
  background-color: #ff7f00;
  padding: 8px;
 }
 .btn-facebook{
+    background-color: #ff7f00;
     margin: 4.5px 9px 0 9.5px;
     padding: 5.5px 5.2px 4.9px 5.2px;
     border-radius: 6px;
+}
+.btn-save{
+ background-color: #ff7f00;
+}
+.btn-remove{
     background-color: #ff7f00;
+    align-self: center;
+
 }
 .line{
     margin-bottom: 3rem;
@@ -171,13 +187,13 @@ canvas{
 .justify-content{
     justify-content: center;
 }
-.space-between {
+.space-between{
     justify-content: space-between;
 }
-.align-center {
+.align-center{
     align-items: center;
 }
-.flex-column {
+.flex-column{
     display: flex;
     flex-direction: column;
 }
@@ -187,23 +203,49 @@ canvas{
     padding: 0;
 } 
 
+.share-download{
+    justify-self: flex-end;
+}
+
 /* RESPONSIV */
 @media screen and (max-width: 780px){
- 
+    body{
+        overflow-x: hidden;
+    }
+    canvas{
+        margin:auto;  
+    }
+    .file-input{
+        font-size: 24px;
+        margin: 0px;
+    }
+   li{
+       display: none;
+   }
     .main-editor-container{
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin-top: 255px;
+        margin-top: 7.5rem;
+    }
+    .control{
+        margin-bottom: 2%;
+    } 
+    .conrianer-editor{
+    flex-direction: column;
+    margin-top: 10rem;
     }
     .canvas-panel{
-        margin: 10px;
+        margin: 11px;
     }
     .control-panel{
         align-items: center;
         margin-bottom: 18rem;
     }
-    form{
-        text-align: center;
+    .meme-editor-modali{
+        width: 100vw;
     }
-}
+} 
+
+
+
