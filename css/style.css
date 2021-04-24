@@ -98,8 +98,7 @@ max-width: 100%;
 
 .img-btn{
     width: 100%;
-    height: 100%;
-    /* margin: 1rem; */
+    margin-bottom: .625rem;
     object-fit: contain;
 }
 
