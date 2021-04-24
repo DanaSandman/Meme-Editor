@@ -214,6 +214,8 @@ canvas{
     }
     canvas{
         margin:auto;  
+        width: 320px;
+        height: 320px;
     }
     .file-input{
         font-size: 24px;
