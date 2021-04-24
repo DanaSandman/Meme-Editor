@@ -217,6 +217,10 @@ canvas{
         width: 320px;
         height: 320px;
     }
+    .grid-container{
+        grid-row-gap: 2px;
+    }
+   
     .file-input{
         font-size: 24px;
         margin: 0px;
